@@ -612,12 +612,12 @@ class _TargetWidget extends StatelessWidget {
     return Positioned(
       top: offset.dy,
       left: offset.dx,
-      child: disableDefaultChildGestures ||
-              hitTestBehavior == HitTestBehavior.opaque
-          ? IgnorePointer(
+      child: !disableDefaultChildGestures ||
+              hitTestBehavior != HitTestBehavior.opaque
+          ? targetWidgetContent()
+          : IgnorePointer(
               child: targetWidgetContent(),
-            )
-          : targetWidgetContent(),
+            ),
     );
   }
 
