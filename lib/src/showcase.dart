@@ -297,9 +297,7 @@ class Showcase extends StatefulWidget {
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
             "overlay opacity must be between 0 and 1."),
         assert(onTargetClick == null || disposeOnTap != null,
-            "disposeOnTap is required if you're using onTargetClick"),
-        assert(disposeOnTap == null || onTargetClick != null,
-            "onTargetClick is required if you're using disposeOnTap");
+            "disposeOnTap is required if you're using onTargetClick");
 
   const Showcase.withWidget({
     required this.key,
@@ -450,7 +448,7 @@ class _ShowcaseState extends State<Showcase> {
 
   Future<void> _getOnTargetTap() async {
     if (widget.disposeOnTap == true) {
-      widget.onTargetClick!();
+      widget.onTargetClick?.call();
       await _reverseAnimateTooltip();
       showCaseWidgetState.dismiss();
     } else {
