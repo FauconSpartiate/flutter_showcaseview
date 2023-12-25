@@ -244,6 +244,8 @@ class Showcase extends StatefulWidget {
   /// will still provide a callback.
   final VoidCallback? onBarrierClick;
 
+  final HitTestBehavior? hitTestBehavior;
+
   const Showcase({
     required this.key,
     required this.description,
@@ -288,6 +290,7 @@ class Showcase extends StatefulWidget {
     this.titleTextDirection,
     this.descriptionTextDirection,
     this.onBarrierClick,
+    this.hitTestBehavior,
   })  : height = null,
         width = null,
         container = null,
@@ -325,6 +328,7 @@ class Showcase extends StatefulWidget {
     this.disableDefaultTargetGestures = false,
     this.tooltipPosition,
     this.onBarrierClick,
+    this.hitTestBehavior,
   })  : showArrow = false,
         onToolTipClick = null,
         scaleAnimationDuration = const Duration(milliseconds: 300),
@@ -539,6 +543,7 @@ class _ShowcaseState extends State<Showcase> {
             onLongPress: widget.onTargetLongPress,
             shapeBorder: widget.targetShapeBorder,
             disableDefaultChildGestures: widget.disableDefaultTargetGestures,
+            hitTestBehavior: widget.hitTestBehavior,
           ),
           ToolTipWidget(
             position: position,
@@ -589,6 +594,7 @@ class _TargetWidget extends StatelessWidget {
   final ShapeBorder? shapeBorder;
   final BorderRadius? radius;
   final bool disableDefaultChildGestures;
+  final HitTestBehavior? hitTestBehavior;
 
   const _TargetWidget({
     Key? key,
@@ -600,6 +606,7 @@ class _TargetWidget extends StatelessWidget {
     this.onDoubleTap,
     this.onLongPress,
     this.disableDefaultChildGestures = false,
+    this.hitTestBehavior,
   }) : super(key: key);
 
   @override
@@ -622,6 +629,7 @@ class _TargetWidget extends StatelessWidget {
         onTap: onTap,
         onLongPress: onLongPress,
         onDoubleTap: onDoubleTap,
+        behavior: hitTestBehavior,
         child: Container(
           height: size!.height + 16,
           width: size!.width + 16,
