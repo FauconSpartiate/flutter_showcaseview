@@ -446,8 +446,8 @@ class _ShowcaseState extends State<Showcase> {
 
   Future<void> _getOnTargetTap() async {
     if (widget.disposeOnTap == true) {
-      await _reverseAnimateTooltip();
       showCaseWidgetState.dismiss();
+      await _reverseAnimateTooltip();
       widget.onTargetClick!();
     } else {
       (widget.onTargetClick ?? _nextIfAny).call();
