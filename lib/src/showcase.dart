@@ -612,7 +612,8 @@ class _TargetWidget extends StatelessWidget {
     return Positioned(
       top: offset.dy,
       left: offset.dx,
-      child: disableDefaultChildGestures
+      child: disableDefaultChildGestures ||
+              hitTestBehavior == HitTestBehavior.opaque
           ? IgnorePointer(
               child: targetWidgetContent(),
             )
