@@ -498,6 +498,7 @@ class _ShowcaseState extends State<Showcase> {
             }
             widget.onBarrierClick?.call();
           },
+          behavior: widget.hitTestBehavior,
           child: ClipPath(
             clipper: RRectClipper(
               area: _isScrollRunning ? Rect.zero : rectBound,
